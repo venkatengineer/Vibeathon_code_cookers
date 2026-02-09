@@ -21,3 +21,18 @@ final output of the function will be :
 the ai model should always give the output from these defined categories, as a json format. nothing else . 
 even if the info is irrelevent , it should catogorise it into the defined values. 
 and follow the string output format .
+
+
+Propmt 2 : 
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+c:\Users\VenkatPrashad\Coding\hackathon\vibathon\ai.py:67: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).   
+
+  "timestamp": datetime.utcnow().isoformat()
+
+just use the post req for this. no need the package
