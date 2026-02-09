@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+  cursor: none;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+/* Cursor */
+.cursor {
+  width: 14px;
+  height: 14px;
+  background: #2563eb;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* App Layout */
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  height: 100vh;
+  padding: 40px;
+  gap: 30px;
+}
+
+/* AI GUIDE */
+.ai-guide {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.ai-guide lottie-player {
+  width: 260px;
+}
+
+.ai-dialogue {
+  margin-top: 15px;
+  font-size: 17px;
+  text-align: center;
+  color: #1e293b;
+}
+
+/* Cards */
+.input-card, .output-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  animation: rise 0.8s ease;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 140px;
+  border-radius: 16px;
+  border: 1px solid #c7d2fe;
+  padding: 15px;
+  font-size: 15px;
+  resize: none;
+}
+
+/* Upload */
+.upload-box {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 16px;
+  background: #eef2ff;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 18px;
+  border: none;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  color: white;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+/* Output */
+.badge {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.badge span {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e0e7ff;
+  font-weight: 600;
+}
+
+pre {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 16px;
+  white-space: pre-wrap;
+}
+
+.time {
+  margin-top: 10px;
+  color: #2563eb;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Intelligence Panel */
+.intel-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  animation: rise 0.8s ease;
+}
+
+.intel-card h2 {
+  margin-bottom: 20px;
+}
+
+.intel-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 15px;
+}
+
+.intel-item strong {
+  color: #2563eb;
+}
+
+/* Critical pulse */
+.critical {
+  color: #dc2626 !important;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
