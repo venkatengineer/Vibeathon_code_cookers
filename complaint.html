@@ -22,13 +22,12 @@ body {
     color: white;
 }
 
-/* Glass Card */
 .container {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     padding: 40px;
     border-radius: 20px;
-    width: 400px;
+    width: 420px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     animation: fadeIn 0.8s ease;
 }
@@ -37,8 +36,6 @@ h2 {
     text-align: center;
     margin-bottom: 25px;
     font-weight: 600;
-    letter-spacing: 1px;
-    animation: slideDown 0.8s ease;
 }
 
 input, textarea {
@@ -64,11 +61,6 @@ textarea {
     height: 100px;
 }
 
-input[type="file"] {
-    padding: 8px;
-    cursor: pointer;
-}
-
 button {
     width: 100%;
     padding: 12px;
@@ -88,8 +80,27 @@ button:hover {
     box-shadow: 0 10px 25px rgba(255, 75, 43, 0.6);
 }
 
-button:active {
-    transform: scale(0.97);
+.redirect-box {
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.redirect-box a {
+    display: block;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.1);
+    transition: 0.3s ease;
+}
+
+.redirect-box a:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.05);
 }
 
 /* Animations */
@@ -98,20 +109,9 @@ button:active {
     to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-/* Subtle floating animation */
-.container:hover {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
 }
 </style>
 </head>
@@ -127,6 +127,14 @@ button:active {
         <input type="file" name="image">
         <button type="submit">Submit</button>
     </form>
+
+    <!-- Redirect Section -->
+    <div class="redirect-box" id="redirectBox">
+        <p>✅ Complaint Submitted Successfully</p>
+        <a href="/police">🚓 Go to Police Dashboard</a>
+        <a href="/ambulance">🚑 Go to Ambulance Dashboard</a>
+        <a href="/firestation">🚒 Go to Firestation Dashboard</a>
+    </div>
 </div>
 
 <script>
@@ -139,7 +147,8 @@ document.getElementById("complaintForm").onsubmit = async function(e) {
         body: formData
     });
 
-    alert("Complaint Submitted!");
+    document.getElementById("complaintForm").reset();
+    document.getElementById("redirectBox").style.display = "block";
 };
 </script>
 
