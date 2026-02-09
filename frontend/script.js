@@ -1,38 +1,72 @@
-document.addEventListener("mousemove", e => {
+/* ===============================
+   Custom Cursor
+================================ */
+document.addEventListener("mousemove", (e) => {
   const c = document.querySelector(".cursor");
+  if (!c) return;
   c.style.left = e.clientX + "px";
   c.style.top = e.clientY + "px";
 });
 
-function analyze() {
-  document.getElementById("ai-text").innerText =
-    "Analyzing input… determining severity and response team.";
+/* ===============================
+   Submit Emergency (MAIN FLOW)
+================================ */
+function submitEmergency() {
+  const descriptionEl = document.getElementById("description");
+  const mediaEl = document.getElementById("media");
 
-  setTimeout(() => {
-    const categories = ["Police", "Ambulance", "Fire Station"];
-    const severity = ["Low", "Medium", "High", "Critical"];
+  if (!descriptionEl || descriptionEl.value.trim() === "") {
+    alert("Please describe the emergency.");
+    return;
+  }
 
-    const c = categories[Math.floor(Math.random()*categories.length)];
-    const s = severity[Math.floor(Math.random()*severity.length)];
+  // AI simulation
+  const categories = ["Police", "Ambulance", "Fire Station"];
+  const severityLevels = ["Low", "Medium", "High", "Critical"];
 
-    document.getElementById("category").innerText = c;
-    document.getElementById("severity").innerText = s;
+  const category =
+    descriptionEl.value.toLowerCase().includes("fire")
+      ? "Fire Station"
+      : descriptionEl.value.toLowerCase().includes("injured")
+      ? "Ambulance"
+      : categories[Math.floor(Math.random() * categories.length)];
 
-    document.getElementById("message").innerText =
-`Emergency Category: ${c}
-Severity Level: ${s}
+  const severity =
+    descriptionEl.value.toLowerCase().includes("unconscious")
+      ? "Critical"
+      : severityLevels[Math.floor(Math.random() * severityLevels.length)];
 
-Description:
-${description.value}
+  const emergencyData = {
+    id: Date.now(),
+    description: descriptionEl.value,
+    category: category,
+    severity: severity,
+    departments: category,
+    mediaCount: mediaEl ? mediaEl.files.length : 0,
+    time: new Date().toLocaleString(),
+    status: "Active"
+  };
 
-Status:
-Forwarded to nearest unit immediately.`;
+  /* ===============================
+     Store for USER STATUS SCREEN
+  ================================ */
+  localStorage.setItem("emergencyStatus", JSON.stringify(emergencyData));
 
-    document.getElementById("time").innerText =
-      "Timestamp: " + new Date().toLocaleString();
+  /* ===============================
+     Store for ADMIN DASHBOARD
+  ================================ */
+  const existing =
+    JSON.parse(localStorage.getItem("adminEmergencies")) || [];
 
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("ai-text").innerText =
-      "Assessment complete. Emergency teams have been notified.";
-  }, 2200);
+  existing.push(emergencyData);
+
+  localStorage.setItem(
+    "adminEmergencies",
+    JSON.stringify(existing)
+  );
+
+  /* ===============================
+     Redirect to Status Page
+  ================================ */
+  window.location.href = "status.html";
 }

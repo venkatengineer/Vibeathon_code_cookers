@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emergency Status</title>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="status-page">
+
+  <!-- AI CHARACTER -->
+  <div class="calm-ai">
+    <lottie-player
+      src="https://assets6.lottiefiles.com/packages/lf20_0yfsb3a1.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay>
+    </lottie-player>
+
+    <div class="calm-text" id="calmText">
+      You’re safe right now. Help is on the way.
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="status-grid">
+
+    <!-- LEFT: PROGRESS -->
+    <div class="progress-panel">
+      <h3>Live Progress</h3>
+
+      <ul class="progress-list">
+        <li class="active">✔ Report Received</li>
+        <li id="p-analyze">🧠 AI Analysis in progress</li>
+        <li id="p-classify">🚨 Emergency Classified</li>
+        <li id="p-forward">📡 Forwarded to Authorities</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: DETAILS -->
+    <div class="details-panel">
+      <h3>Emergency Details</h3>
+
+      <p><b>Type:</b> <span id="category"></span></p>
+      <p><b>Severity:</b> <span id="severity"></span></p>
+      <p><b>Departments Notified:</b> <span id="departments"></span></p>
+      <p><b>Reported At:</b> <span id="time"></span></p>
+    </div>
+
+  </div>
+
+  <!-- GUIDANCE -->
+  <div class="guidance-panel">
+    <h3>What You Should Do Now</h3>
+    <ul>
+      <li>✔ Stay calm and remain where you are if safe</li>
+      <li>✔ Keep your phone accessible</li>
+      <li>✔ Follow instructions from emergency responders</li>
+      <li>✔ Avoid spreading panic around you</li>
+    </ul>
+  </div>
+
+  <!-- TRUST PANEL -->
+  <div class="trust-panel">
+    ✅ This emergency report has been securely delivered to official response teams.  
+    Your information is encrypted and time-stamped.
+  </div>
+
+</div>
+
+<script src="status.js"></script>
+</body>
+</html>
