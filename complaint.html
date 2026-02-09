@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Raise Complaint</title>
+<style>
+body { font-family: Arial; padding: 40px; }
+input, textarea { width: 100%; padding: 10px; margin: 10px 0; }
+button { padding: 10px 20px; background: red; color: white; border: none; }
+</style>
+</head>
+<body>
+
+<h2>Raise Emergency Complaint</h2>
+
+<form id="complaintForm" enctype="multipart/form-data">
+<input type="text" name="title" placeholder="Title" required>
+<textarea name="description" placeholder="Describe the emergency" required></textarea>
+<input type="file" name="image">
+<button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("complaintForm").onsubmit = async function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    await fetch("http://127.0.0.1:5000/file-complaint", {
+        method: "POST",
+        body: formData
+    });
+
+    alert("Complaint Submitted!");
+};
+</script>
+
+</body>
+</html>

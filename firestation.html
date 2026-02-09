@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Police Dashboard</title>
+<style>
+body { font-family: Arial; padding: 40px; }
+.card { border:1px solid black; padding:15px; margin:10px; }
+</style>
+</head>
+<body>
+
+<h2>firestation</h2>
+<div id="data"></div>
+
+<script>
+fetch("http://127.0.0.1:5000/get/FireStation")
+.then(res => res.json())
+.then(data => {
+    const div = document.getElementById("data");
+    data.forEach(item => {
+    div.innerHTML += `
+    <div class="card">
+        <h3>${item.title}</h3>
+        <p>${item.message}</p>
+        <p>Severity: ${item.severity}</p>
+        <p>${item.timestamp}</p>
+        ${item.image ? `<img src="${item.image}" width="300">` : ""}
+    </div>`;
+});
+
+});
+</script>
+
+</body>
+</html>
