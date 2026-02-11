@@ -12,7 +12,7 @@ app.config["UPLOAD_FOLDER"] = "uploads"
 
 os.makedirs("uploads", exist_ok=True)
 
-GEMINI_API_KEY = "AIzaSyAU_9G8GoixA3EAk8wUBB0Kt9vE7Q01qUQ"
+GEMINI_API_KEY = "apikeyhere"
 
 ALLOWED_CATEGORIES = ["Police", "Ambulance", "FireStation"]
 ALLOWED_SEVERITY = ["Low", "Medium", "High", "Critical"]
@@ -247,3 +247,4 @@ def uploaded_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
